@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class Prim {
 
     /**
@@ -66,9 +64,9 @@ public class Prim {
 
 
     /**
-         * Escribe por pantalla las aristas
-         * @param aristas Lista de pares atributo-valor
-         */
+     * Escribe por pantalla las aristas
+     * @param aristas Lista de pares atributo-valor
+     */
     public static void escribirLista(Lista<Par<String, String>> aristas) {
         for (int i = 1; i <= aristas.longitud(); i++) {
             Par<String, String> arista = aristas.consultar(i);
@@ -80,7 +78,34 @@ public class Prim {
 
     //Realizamos las pruebas aqui
     public static void main(String[] args) {
-        //No se que hay que poner en info vertice hay que preguntar
+        /*
+        //Grafo propio para pruebas de la funcion
+        Grafo<String, String, Integer> grafoPrueba = new Grafo<>();
+        grafoPrueba.insertarVertice("A", null);
+        grafoPrueba.insertarVertice("B", null);
+        grafoPrueba.insertarVertice("C", null);
+        grafoPrueba.insertarVertice("D", null);
+        grafoPrueba.insertarVertice("E", null);
+        //Aristas grafo propio sin ordenar
+        grafoPrueba.insertarArista("A", "B", 1);
+        grafoPrueba.insertarArista("B", "A", 1);
+        grafoPrueba.insertarArista("A", "C", 5);
+        grafoPrueba.insertarArista("C", "A", 5);
+        grafoPrueba.insertarArista("B", "D", 6);
+        grafoPrueba.insertarArista("D", "B", 6);
+        grafoPrueba.insertarArista("B", "E", 2);
+        grafoPrueba.insertarArista("E", "B", 2);
+        grafoPrueba.insertarArista("C", "D", 4);
+        grafoPrueba.insertarArista("D", "C", 4);
+        grafoPrueba.insertarArista("D", "E", 3);
+        grafoPrueba.insertarArista("E", "D", 3);
+
+        Lista<Par<String, String>> aristasPrueba = new Lista<>();
+        int pesoPrueba = algoritmoPrim(grafoPrueba, aristasPrueba);
+        escribirLista(aristasPrueba);
+        System.out.println("Peso total: " + pesoPrueba);*/
+
+        //Grafo proporcionado para el ejercicio
         Grafo<String, String, Integer> grafo = new Grafo<>();
         grafo.insertarVertice("A", null);
         grafo.insertarVertice("B", null);
@@ -89,26 +114,40 @@ public class Prim {
         grafo.insertarVertice("E", null);
         grafo.insertarVertice("F", null);
         grafo.insertarVertice("G", null);
+
+        // Aristas de A
         grafo.insertarArista("A", "B", 10);
-        grafo.insertarArista("B", "A", 10);
-        grafo.insertarArista("A", "D", 7);
-        grafo.insertarArista("D", "A", 7);
         grafo.insertarArista("A", "C", 4);
-        grafo.insertarArista("C", "A", 4);
-        grafo.insertarArista("B", "E", 10);
-        grafo.insertarArista("E", "B", 10);
-        grafo.insertarArista("C", "F", 3);
-        grafo.insertarArista("F", "C", 3);
-        grafo.insertarArista("D", "G", 5);
-        grafo.insertarArista("G", "D", 5);
-        grafo.insertarArista("F", "G", 5);
-        grafo.insertarArista("G", "F", 5);
-        grafo.insertarArista("E", "G", 2);
-        grafo.insertarArista("G", "E", 2);
-        grafo.insertarArista("D", "B", 2);
+        grafo.insertarArista("A", "D", 7);
+
+        //Aristas de B
+        grafo.insertarArista("B", "A", 10);
         grafo.insertarArista("B", "D", 2);
-        grafo.insertarArista("D", "C", 2);
+        grafo.insertarArista("B", "E", 10);
+
+        //Aristas de C
+        grafo.insertarArista("C", "A", 4);
         grafo.insertarArista("C", "D", 2);
+        grafo.insertarArista("C", "F", 3);
+
+        //Aristas de D
+        grafo.insertarArista("D", "A", 7);
+        grafo.insertarArista("D", "B", 2);
+        grafo.insertarArista("D", "C", 2);
+        grafo.insertarArista("D", "G", 5);
+
+        //Aristas de E
+        grafo.insertarArista("E", "B", 10);
+        grafo.insertarArista("E", "G", 2);
+
+        //Aristas de F
+        grafo.insertarArista("F", "C", 3);
+        grafo.insertarArista("F", "G", 5);
+
+        //Aristas de G
+        grafo.insertarArista("G", "D", 5);
+        grafo.insertarArista("G", "E", 2);
+        grafo.insertarArista("G", "F", 5);
 
 
         Lista<Par<String, String>> aristas = new Lista<>();
