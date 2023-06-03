@@ -7,12 +7,10 @@ public class Prim {
      * @return suma de pesos
      */
     public static int algoritmoPrim(Grafo<String, String, Integer> g, Lista<Par<String, String>> aristas) {
+        int pesoTotal = 0;
         Lista<String> verticesVisitados = new Lista<>();
         verticesVisitados.insertar(1, g.listaVertices().consultar(1)); // Comenzamos desde el vértice A
-        int pesoTotal = 0;
-        int contador = 0;
-        Lista<String> elemVisitados = new Lista<>();
-        elemVisitados.insertar(1, g.listaVertices().consultar(1)); //Añadimos A
+
 
 
         while (verticesVisitados.longitud() < g.numVertices()) {
@@ -49,21 +47,20 @@ public class Prim {
                 aristas.insertar(aristas.longitud() + 1, menorArista);
                 pesoTotal += menorPeso;
                 verticesVisitados.insertar(verticesVisitados.longitud() + 1, menorArista.getValor());
-                elemVisitados.insertar(elemVisitados.longitud() + 1, menorArista.getValor()); // Agregar el elemento visitado a la lista local
-
             }
         }
 
-        System.out.println("Elementos visitados:");
-        for (int i = 1; i <= elemVisitados.longitud(); i++) {
-            System.out.print(elemVisitados.consultar(i) + " ");
-        }
-        System.out.println();
-
+        mostrarListaVertices(verticesVisitados);
         return pesoTotal;
     }
 
-
+    public static void mostrarListaVertices(Lista<String> verticesVisitados) {
+        System.out.println("Elementos visitados:");
+        for (int i = 1; i <= verticesVisitados.longitud(); i++) {
+            System.out.print(verticesVisitados.consultar(i) + " ");
+        }
+        System.out.println();
+    }
 
     /**
      * Escribe por pantalla las aristas
