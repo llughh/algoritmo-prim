@@ -22,16 +22,16 @@ public class Prim {
                 for (int j = 1; j <= sucesores.longitud(); j++) {
                     String sucesor = sucesores.consultar(j);
 
-                    boolean verticeVisitado = false;
+                    boolean verticeFueVisitado = false;
                     int k = 1;
-                    while (k <= verticesVisitados.longitud() && !verticeVisitado) {
+                    while (k <= verticesVisitados.longitud() && !verticeFueVisitado) {
                         if (verticesVisitados.consultar(k).equals(sucesor)) {
-                            verticeVisitado = true;
+                            verticeFueVisitado = true;
                         }
                         k++;
                     }
 
-                    if (!verticeVisitado) {
+                    if (!verticeFueVisitado) {
                         int peso = g.costeArista(vertice, sucesor);
 
                         if (peso < menorPeso) {
