@@ -10,6 +10,7 @@ public class Prim {
         Lista<String> verticesVisitados = new Lista<>();
         verticesVisitados.insertar(1, g.listaVertices().consultar(1)); // Comenzamos desde el vértice A
         int pesoTotal = 0;
+        int contador = 0;
         Lista<String> elemVisitados = new Lista<>();
         elemVisitados.insertar(1, g.listaVertices().consultar(1)); //Añadimos A
 
@@ -26,11 +27,12 @@ public class Prim {
                     String sucesor = sucesores.consultar(j);
 
                     boolean encontrado = false;
-                    for (int k = 1; k <= verticesVisitados.longitud(); k++) {
+                    int k = 1;
+                    while (k <= verticesVisitados.longitud() && !encontrado) {
                         if (verticesVisitados.consultar(k).equals(sucesor)) {
                             encontrado = true;
-                            break;
                         }
+                        k++;
                     }
 
                     if (!encontrado) {
