@@ -11,8 +11,6 @@ public class Prim {
         Lista<String> verticesVisitados = new Lista<>();
         verticesVisitados.insertar(1, g.listaVertices().consultar(1)); // Comenzamos desde el vértice A
 
-
-
         while (verticesVisitados.longitud() < g.numVertices()) {
             int menorPeso = Integer.MAX_VALUE;
             Par<String, String> menorArista = null;
@@ -24,16 +22,16 @@ public class Prim {
                 for (int j = 1; j <= sucesores.longitud(); j++) {
                     String sucesor = sucesores.consultar(j);
 
-                    boolean encontrado = false;
+                    boolean verticeVisitado = false;
                     int k = 1;
-                    while (k <= verticesVisitados.longitud() && !encontrado) {
+                    while (k <= verticesVisitados.longitud() && !verticeVisitado) {
                         if (verticesVisitados.consultar(k).equals(sucesor)) {
-                            encontrado = true;
+                            verticeVisitado = true;
                         }
                         k++;
                     }
 
-                    if (!encontrado) {
+                    if (!verticeVisitado) {
                         int peso = g.costeArista(vertice, sucesor);
 
                         if (peso < menorPeso) {
