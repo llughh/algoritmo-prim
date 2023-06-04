@@ -1,7 +1,7 @@
 public class Prim {
 
     /**
-     *
+     * Algoritmo de prim para grafos no dirigidos
      * @param g grafo no dirigido
      * @param aristas lista de pares atributo-valor
      * @return suma de pesos
@@ -11,7 +11,7 @@ public class Prim {
         Lista<String> verticesVisitados = new Lista<>();
         verticesVisitados.insertar(1, g.listaVertices().consultar(1)); // Comenzamos desde el vértice A
 
-        while (verticesVisitados.longitud() < g.numVertices()) {
+        do {
             int menorPeso = Integer.MAX_VALUE;
             Par<String, String> menorArista = null;
 
@@ -46,12 +46,16 @@ public class Prim {
                 pesoTotal += menorPeso;
                 verticesVisitados.insertar(verticesVisitados.longitud() + 1, menorArista.getValor());
             }
-        }
+        }while (verticesVisitados.longitud() < g.numVertices());
 
         mostrarListaVertices(verticesVisitados);
         return pesoTotal;
     }
 
+    /**
+     * Muestra por pantalla los vértices visitados en el orden correspondiente
+     * @param verticesVisitados
+     */
     public static void mostrarListaVertices(Lista<String> verticesVisitados) {
         System.out.println("Elementos visitados:");
         for (int i = 1; i <= verticesVisitados.longitud(); i++) {
@@ -73,7 +77,7 @@ public class Prim {
         }
     }
 
-    //Realizamos las pruebas aqui
+    // Funcion main para la realizacion de las pruebas
     public static void main(String[] args) {
         /*
         //Grafo propio para pruebas de la funcion
